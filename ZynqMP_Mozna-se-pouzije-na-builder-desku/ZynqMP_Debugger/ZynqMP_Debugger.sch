@@ -1,0 +1,345 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "ZynqMP Debugger"
+Date ""
+Rev "1.1"
+Comp "Radek Šebela\\nVojenský výzkumný ústav, s. p.\\n\\n"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Label 10000 3150 0    39   ~ 0
+GND
+Text Label 10000 3250 0    39   ~ 0
+GND
+Text Label 10000 3350 0    39   ~ 0
+GND
+Text Label 10000 3450 0    39   ~ 0
+GND
+Text Label 10000 3550 0    39   ~ 0
+GND
+Text Label 9500 3650 2    39   ~ 0
+JTAG_3V3
+$Comp
+L Connector_Generic:Conn_02x07_Odd_Even J4
+U 1 1 62AA8C94
+P 9800 3350
+F 0 "J4" H 9850 2825 50  0000 C CNN
+F 1 "JTAG" H 9850 2916 50  0000 C CNN
+F 2 "Connector_JST:JST_PHD_B14B-PHDSS_2x07_P2.00mm_Vertical" H 9800 3350 50  0001 C CNN
+F 3 "~" H 9800 3350 50  0001 C CNN
+	1    9800 3350
+	-1   0    0    1   
+$EndComp
+Entry Wire Line
+	10400 3150 10500 3050
+Entry Wire Line
+	10400 3250 10500 3150
+Entry Wire Line
+	10400 3350 10500 3250
+Entry Wire Line
+	10400 3450 10500 3350
+Entry Wire Line
+	10400 3550 10500 3450
+Entry Wire Line
+	9100 3650 9000 3750
+Wire Wire Line
+	10000 3150 10400 3150
+Wire Wire Line
+	10400 3250 10000 3250
+Wire Wire Line
+	10000 3350 10400 3350
+Wire Wire Line
+	10400 3450 10000 3450
+Wire Wire Line
+	10000 3550 10400 3550
+Wire Wire Line
+	9500 3650 9100 3650
+Wire Bus Line
+	9000 3850 10500 3850
+Wire Bus Line
+	10500 2750 8500 2750
+Text Notes 1250 7450 0    69   ~ 0
+Konektor J4 - JTAG:\nXilinx kompatibilní JTAG (ROZŠÍŘENÝ O KONZOLI NA PINECH 12 a 14).\n\n\nLED D1 - JTAG 3V3:\nMusí svítít vždy - signalizuje přivedené napětí 3V3 z desky.\n\nLED D2 - VDD3V3:\nMusí svítít vždy - signalizuje přivedené napětí 3V3 z desky (za pojistkou F1).\n
+Text Label 8300 3050 2    39   ~ 0
+ZYNQ_RX_42
+Text Label 8300 3150 2    39   ~ 0
+ZYNQ_TX_43
+Connection ~ 9000 3850
+Text Label 5050 2750 0    50   ~ 0
+MAIN_BUS
+Entry Wire Line
+	8900 3650 9000 3750
+Entry Wire Line
+	8900 3550 9000 3650
+Wire Wire Line
+	7900 3150 7900 3550
+Wire Wire Line
+	7900 3550 8900 3550
+Wire Wire Line
+	7800 3050 7800 3650
+Wire Wire Line
+	7800 3650 8900 3650
+$Comp
+L Device:Polyfuse F1
+U 1 1 62AB9C8D
+P 5850 3050
+F 0 "F1" V 5625 3050 50  0000 C CNN
+F 1 "500 mA" V 5716 3050 50  0000 C CNN
+F 2 "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5900 2850 50  0001 L CNN
+F 3 "~" H 5850 3050 50  0001 C CNN
+	1    5850 3050
+	0    1    1    0   
+$EndComp
+Text Label 5700 3050 2    39   ~ 0
+VDD3V3
+Text Label 6000 3050 0    39   ~ 0
+JTAG_3V3
+Entry Wire Line
+	6400 3050 6500 2950
+Entry Wire Line
+	3800 2950 3900 3050
+Wire Wire Line
+	6000 3050 6400 3050
+Connection ~ 10500 3850
+$Comp
+L Device:LED D1
+U 1 1 62AB4005
+P 9250 1000
+F 0 "D1" H 9243 745 50  0000 C CNN
+F 1 "JTAG 3V3" H 9243 836 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9250 1000 50  0001 C CNN
+F 3 "~" H 9250 1000 50  0001 C CNN
+	1    9250 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 62AB5575
+P 9250 1500
+F 0 "D2" H 9243 1245 50  0000 C CNN
+F 1 "VDD3V3" H 9243 1336 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9250 1500 50  0001 C CNN
+F 3 "~" H 9250 1500 50  0001 C CNN
+	1    9250 1500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 62AB63EE
+P 9750 1000
+F 0 "R1" V 9543 1000 50  0000 C CNN
+F 1 "3k3" V 9634 1000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9680 1000 50  0001 C CNN
+F 3 "~" H 9750 1000 50  0001 C CNN
+	1    9750 1000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 62AB6D61
+P 9750 1500
+F 0 "R2" V 9543 1500 50  0000 C CNN
+F 1 "3k3" V 9634 1500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9680 1500 50  0001 C CNN
+F 3 "~" H 9750 1500 50  0001 C CNN
+	1    9750 1500
+	0    1    1    0   
+$EndComp
+Entry Wire Line
+	10400 1500 10500 1600
+Entry Wire Line
+	10400 1000 10500 1100
+Entry Wire Line
+	8500 1100 8600 1000
+Entry Wire Line
+	8500 1600 8600 1500
+Connection ~ 8500 2750
+Connection ~ 10500 2750
+Wire Wire Line
+	9100 1000 8600 1000
+Wire Wire Line
+	8600 1500 9100 1500
+Wire Wire Line
+	9900 1000 10400 1000
+Wire Wire Line
+	9900 1500 10400 1500
+Wire Wire Line
+	9400 1000 9600 1000
+Wire Wire Line
+	9400 1500 9600 1500
+Text Label 9100 1000 2    39   ~ 0
+JTAG_3V3
+Text Label 9100 1500 2    39   ~ 0
+VDD3V3
+Text Label 9900 1000 0    39   ~ 0
+GND
+Text Label 9900 1500 0    39   ~ 0
+GND
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 62AB61C7
+P 9000 4750
+F 0 "H1" H 9100 4796 50  0000 L CNN
+F 1 "MountingHole" H 9100 4705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4.3mm_M4_Pad_Via" H 9000 4750 50  0001 C CNN
+F 3 "~" H 9000 4750 50  0001 C CNN
+	1    9000 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 62AB6BB0
+P 9000 5250
+F 0 "H2" H 9100 5296 50  0000 L CNN
+F 1 "MountingHole" H 9100 5205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4.3mm_M4_Pad_Via" H 9000 5250 50  0001 C CNN
+F 3 "~" H 9000 5250 50  0001 C CNN
+	1    9000 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 62AB6E55
+P 9000 5750
+F 0 "H3" H 9100 5796 50  0000 L CNN
+F 1 "MountingHole" H 9100 5705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4.3mm_M4_Pad_Via" H 9000 5750 50  0001 C CNN
+F 3 "~" H 9000 5750 50  0001 C CNN
+	1    9000 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 62AB6FE7
+P 9000 6250
+F 0 "H4" H 9100 6296 50  0000 L CNN
+F 1 "MountingHole" H 9100 6205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4.3mm_M4_Pad_Via" H 9000 6250 50  0001 C CNN
+F 3 "~" H 9000 6250 50  0001 C CNN
+	1    9000 6250
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	10400 3050 10500 2950
+Entry Wire Line
+	10400 3650 10500 3550
+Text Label 10000 3050 0    39   ~ 0
+GND
+Text Label 10000 3650 0    39   ~ 0
+GND
+Wire Wire Line
+	10000 3050 10400 3050
+Wire Wire Line
+	10000 3650 10400 3650
+$Comp
+L Device:LED D5
+U 1 1 62BC53D9
+P 7250 2000
+F 0 "D5" H 7243 1745 50  0000 C CNN
+F 1 "ZYNQ RX" H 7243 1836 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7250 2000 50  0001 C CNN
+F 3 "~" H 7250 2000 50  0001 C CNN
+	1    7250 2000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D6
+U 1 1 62BC5790
+P 7250 2500
+F 0 "D6" H 7243 2245 50  0000 C CNN
+F 1 "ZYNQ TX" H 7243 2336 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7250 2500 50  0001 C CNN
+F 3 "~" H 7250 2500 50  0001 C CNN
+	1    7250 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 62BC6C02
+P 7750 2000
+F 0 "R6" V 7543 2000 50  0000 C CNN
+F 1 "3k3" V 7634 2000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 7680 2000 50  0001 C CNN
+F 3 "~" H 7750 2000 50  0001 C CNN
+	1    7750 2000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 62BC72DD
+P 7750 2500
+F 0 "R7" V 7543 2500 50  0000 C CNN
+F 1 "3k3" V 7634 2500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 7680 2500 50  0001 C CNN
+F 3 "~" H 7750 2500 50  0001 C CNN
+	1    7750 2500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7400 2000 7600 2000
+Wire Wire Line
+	7400 2500 7600 2500
+Entry Wire Line
+	8400 2500 8500 2600
+Entry Wire Line
+	8400 2000 8500 2100
+Entry Wire Line
+	6500 2100 6600 2000
+Entry Wire Line
+	6500 2600 6600 2500
+Wire Wire Line
+	6600 2000 7100 2000
+Wire Wire Line
+	7900 2000 8400 2000
+Wire Wire Line
+	7900 2500 8400 2500
+Wire Wire Line
+	7100 2500 6600 2500
+Connection ~ 6500 2750
+Wire Bus Line
+	6500 2750 8500 2750
+Wire Bus Line
+	3800 2750 6500 2750
+Text Label 7100 2000 2    39   ~ 0
+VDD3V3
+Text Label 7100 2500 2    39   ~ 0
+VDD3V3
+Text Label 7900 2500 0    39   ~ 0
+ZYNQ_TX_43
+Text Label 7900 2000 0    39   ~ 0
+ZYNQ_RX_42
+Wire Wire Line
+	7800 3050 9500 3050
+Wire Wire Line
+	7900 3150 9500 3150
+Wire Wire Line
+	3900 3050 5700 3050
+NoConn ~ 9500 3250
+NoConn ~ 9500 3350
+NoConn ~ 9500 3450
+NoConn ~ 9500 3550
+Wire Bus Line
+	9000 3850 9000 4250
+Wire Bus Line
+	10500 3850 10500 4250
+Wire Bus Line
+	3800 2750 3800 3050
+Wire Bus Line
+	6500 2750 6500 3050
+Wire Bus Line
+	6500 2100 6500 2750
+Wire Bus Line
+	10500 1100 10500 2750
+Wire Bus Line
+	9000 3350 9000 3850
+Wire Bus Line
+	8500 1100 8500 2750
+Wire Bus Line
+	10500 2750 10500 3850
+$EndSCHEMATC
