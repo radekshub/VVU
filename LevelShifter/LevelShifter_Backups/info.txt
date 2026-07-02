@@ -1,0 +1,3 @@
+001: Schema, prirazeni soucastek, export netlistu, rozmisteni soucastek na DPS.
+002: PCB, nety, orez, rozliti zemi, prokovy, popisky
+003: Finalizace, prokovy, znovu nety...
